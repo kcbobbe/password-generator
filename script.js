@@ -1,5 +1,3 @@
-alert("Welcome to the password generator!")
-
 var password = ""
 
 var passwordCharset = "";
@@ -9,36 +7,46 @@ var numericCharset = "123456789"
 var upperCaseCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var lowerCaseCharset = "abcdefghijklmnopqrstuvwxyz"
 
-var charCount = prompt("How many characters would you like in your password? (Must be between 8-128)");
+function generatePassword() {
+  password="";
+  charCount=parseInt(document.getElementById('passwordLength').value);
 
-if(specialChars!==true && numericChars!==true && upperCaseChars!==true && lowerCaseChars !==true){
-  var specialChars = confirm("Press OK to include special characters, cancel for no special characters.");
-  if (specialChars) {
-    passwordCharset = passwordCharset + specialCharset;
+  if(document.getElementById("checkSpecial").checked!==true && document.getElementById("checkNumbers").checked!==true && document.getElementById("checkUpperCase").checked!==true && document.getElementById("checkLowerCase").checked !==true || charCount < 8 || charCount > 128){
+    password="Please specify between 8-128 characters and check at least one critera above.";
+    document.getElementById("password").innerHTML=password;
+  } else{
+
+    if (document.getElementById("checkSpecial").checked) {
+      passwordCharset = passwordCharset + specialCharset;
+    }
+
+    if (document.getElementById("checkNumbers").checked) {
+      passwordCharset = passwordCharset + numericCharset;
+    }
+
+    if (document.getElementById("checkUpperCase").checked) {
+      passwordCharset = passwordCharset + upperCaseCharset;
+    }
+
+    if (document.getElementById("checkLowerCase").checked) {
+      passwordCharset = passwordCharset +lowerCaseCharset;
+    }
+
+    for (var i = 0; i < charCount; i++) {
+      password = password + passwordCharset[Math.floor((Math.random()* passwordCharset.length))]
+    }
+    document.getElementById("password").innerHTML = "Your password is: " + password;
+    // return password;
   }
-  var numericChars = confirm("Press OK to include numeric character, cancel for no numeric characters.");
-  var upperCaseChars = confirm("Press OK to include uppercase characters, cancel for no uppercase characters.");
-  var lowerCaseChars = confirm("Press OK to include lowercase characters, cancel for no lowercase characters.");
 }
 
-if (specialChars) {
-  passwordCharset = passwordCharset + specialCharset;
+// https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+
+function copyText(){
+  var copiedText = document.getElementById("password");
+  copiedText.select();
+  copiedText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
 }
 
-if (numericChars) {
-  passwordCharset = passwordCharset + numericCharset;
-}
-
-if (upperCaseChars) {
-  passwordCharset = passwordCharset + upperCaseCharset;
-}
-
-if (lowerCaseCharset) {
-  passwordCharset = passwordCharset +lowerCaseCharset;
-}
-
-for (var i = 0; i < charCount; i++) {
-  password = password + passwordCharset[Math.floor((Math.random()* passwordCharset.length))]
-}
-
-alert("Your password is " + password);
+// https://stackoverflow.com/questions/8206565/check-uncheck-checkbox-with-javascript-jquery-or-vanilla
