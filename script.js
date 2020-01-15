@@ -11,9 +11,15 @@ function generatePassword() {
   password="";
   charCount=parseInt(document.getElementById('passwordLength').value);
 
-  if(document.getElementById("checkSpecial").checked!==true && document.getElementById("checkNumbers").checked!==true && document.getElementById("checkUpperCase").checked!==true && document.getElementById("checkLowerCase").checked !==true || charCount < 8 || charCount > 128){
-    password="Please specify between 8-128 characters and check at least one critera above.";
-    document.getElementById("password").innerHTML=password;
+  if(document.getElementById("checkSpecial").checked!==true && document.getElementById("checkNumbers").checked!==true && document.getElementById("checkUpperCase").checked!==true && document.getElementById("checkLowerCase").checked !==true && (charCount < 8 || charCount > 128)){
+    password="Password length must be between 8-128 characters and select at least one character type.";
+    document.getElementById("password").innerText=password;
+  } else if(charCount < 8 || charCount > 128){
+    password="Password length must be between 8-128 characters."
+    document.getElementById("password").innerText=password;
+  } else if(document.getElementById("checkSpecial").checked!==true && document.getElementById("checkNumbers").checked!==true && document.getElementById("checkUpperCase").checked!==true && document.getElementById("checkLowerCase").checked !==true) {
+    password="Please select at least one character type."
+    document.getElementById("password").innerText=password;
   } else{
 
     if (document.getElementById("checkSpecial").checked) {
@@ -35,12 +41,9 @@ function generatePassword() {
     for (var i = 0; i < charCount; i++) {
       password = password + passwordCharset[Math.floor((Math.random()* passwordCharset.length))]
     }
-    document.getElementById("password").innerHTML = "Your password is: " + password;
-    // return password;
+    document.getElementById("password").innerText = password;
   }
 }
-
-// https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
 
 function copyText(){
   var copiedText = document.getElementById("password");
