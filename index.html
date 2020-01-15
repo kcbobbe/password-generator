@@ -2,15 +2,17 @@
 <html>
   <head>
     <title>Password Generator</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   </head>
   <body>
     <header>
-      <h1 class="py-2" style="text-align:center; background-color: #dddddd; color:rgb(100,100,100); border-bottom:2px solid black;">Password Generator</h1>
+      <h1>Password Generator</h1>
     </header>
     <main>
-      <div class="container mt-5 p-4" style="border:2px solid black; background-color: #dddddd; max-width:500px;">
+      <div class="container" style="max-width:500px;">
+        
         
         <form class="p-4">
             <div class="form-group">
@@ -34,21 +36,21 @@
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="checkLowerCase">
-            <label class="form-check-label" for="checkLowerCase">
+            <input class="form-check-input" type="checkbox" id="checkLowercase">
+            <label class="form-check-label" for="checkLowercase">
               <strong>Include Lowercase Letters?</strong>
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="checkUpperCase">
-            <label class="form-check-label" for="checkUpperCase">
+            <input class="form-check-input" type="checkbox" id="checkUppercase">
+            <label class="form-check-label" for="checkUppercase">
               <strong>Include Uppercase Letters?</strong>
             </label>
           </div>
 
           <div class="my-4">
-            <button id="generatePasswordButton" type="button" class="btn btn-primary btn-lg" onclick="generatePassword()">Generate Password</button>
-            <button type="button" class="btn btn-secondary btn-lg disabled" onclick="copyText()"><i class="far fa-copy"></i> Copy</button>
+            <button id="generatePasswordButton" type="button" class="btn btn-primary btn-lg">Generate Password</button>
+            <button disabled id="copyButton" type="button" class="btn btn-secondary btn-lg"><i class="far fa-copy"></i> Copy</button>
           </div>
 
           <div class="form-group">
