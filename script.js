@@ -95,6 +95,7 @@ function generatePassword() {
 }
 
 //when the copy button is clicked, this function will select and copy text from the text area
+//https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
 function copyText(){
   passwordTextArea.select();
   passwordTextArea.setSelectionRange(0, 99999);
