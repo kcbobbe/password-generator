@@ -22,8 +22,8 @@ form {
   color: #444444;
 }
 
-.form-check {
-  padding: .25em 0 .25em 0;
+.check-item {
+  padding: .35em 0 .35em 0;
 }
 
 label{
